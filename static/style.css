@@ -80,3 +80,4 @@ footer.site{border-top:1px solid var(--line);color:var(--dim);font-size:.88rem;p
  #player .now img{width:40px;height:40px}#player .ctl .skip{display:none}
  ol.eps li{grid-template-columns:40px 1fr}ol.eps li .dur{display:none}
 }
+.hero.home{display:grid;grid-template-columns:1fr 260px;gap:44px;align-items:center}.podcast-art{display:block;text-align:center;color:var(--muted);font-size:.85rem;text-decoration:none}.podcast-art img{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}.podcast-art:hover span{color:var(--fg,#fafafa)}@media (max-width:760px){.hero.home{grid-template-columns:1fr;gap:24px}.podcast-art{max-width:200px}}

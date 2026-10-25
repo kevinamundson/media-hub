@@ -12,6 +12,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
 BASE = 'https://media.kevinamundson.me'
 AUTHOR = 'Kevin R. Amundson'
+PODCAST = 'The Kingdom of Our Lord'
+OWNER_EMAIL = 'thekingdomofourlord@proton.me'  # public in feeds; used by Apple/Spotify ownership checks
 SITE = 'Kevin Amundson — Media Hub'
 TZ = ZoneInfo('America/Chicago')
 e_ = lambda s: html.escape(str(s), quote=True)
@@ -51,7 +53,7 @@ def page(path, title, body, desc='', image='/covers/og.jpg', active='', og_type=
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{e_(SITE)}"><meta property="og:title" content="{e_(title)}"><meta property="og:description" content="{e_(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#171717">{'' if index else '<meta name="robots" content="noindex">'}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/Vollkorn.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="All recordings — {e_(AUTHOR)}" href="{BASE}/feeds/all.xml">{extra_head}
+<link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{e_(PODCAST)}" href="{BASE}/feeds/all.xml">{extra_head}
 </head><body>
 <header class="site"><div class="wrap"><a class="brand" href="/">Kevin Amundson <span>Media</span></a><nav class="main">{nav}</nav></div></header>
 <main>{body}</main>
@@ -59,7 +61,7 @@ def page(path, title, body, desc='', image='/covers/og.jpg', active='', og_type=
 <span class="dim">Lectures recorded at Redemption City Church and the Redemption School of Theology, shared with permission.</span></div></footer>
 <div id="queue" aria-label="Queue"></div>
 <div id="player" role="region" aria-label="Audio player"><div class="wrap">
- <div class="now"><img id="p-cover" alt="" width="52" height="52" src="/covers/all.jpg"><div><a id="p-title" class="t" href="#">—</a><br><a id="p-series" class="s" href="#"></a></div></div>
+ <div class="now"><img id="p-cover" alt="" width="52" height="52" src="/covers/kingdom-of-our-lord-1400.jpg"><div><a id="p-title" class="t" href="#">—</a><br><a id="p-series" class="s" href="#"></a></div></div>
  <div class="ctl"><button id="p-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
   <button id="p-back" class="skip" aria-label="Back 15 seconds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><text x="8" y="16" font-size="8" fill="currentColor" stroke="none" font-family="Inter">15</text></svg></button>
   <button id="p-pp" class="pp" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
@@ -96,10 +98,11 @@ def video_card(v):
 def build_pages():
     total = sum(e['duration'] for e in episodes)
     latest = sorted(episodes, key=lambda e: e['date'], reverse=True)[:8]
-    body = f'''<section class="hero wrap"><div class="bar"></div><div class="kicker">Media Producer · Writer · Historian · Elder</div>
+    body = f'''<section class="hero wrap home"><div><div class="bar"></div><div class="kicker">Media Producer · Writer · Historian · Elder</div>
 <h1>Lectures, recordings &amp; video</h1><p>Every lecture and recording by Kevin R. Amundson in one place: theology and history courses from the Redemption School of Theology, talks, and the ExploreHistory.Live video series. Listen here, or subscribe in any podcast app.</p>
 <div class="actions"><a class="btn" href="/series/">Browse audio</a><a class="btn ghost" href="/video/">Watch video</a><a class="btn ghost" href="/feeds/">Subscribe</a></div>
-<p class="dim" style="font-size:.9rem;margin-top:16px">{len(episodes)} audio recordings · {len(series)} series · {int(total//3600)} hours · {sum(len(v["videos"]) for v in videos)} videos</p></section>
+<p class="dim" style="font-size:.9rem;margin-top:16px">{len(episodes)} audio recordings · {len(series)} series · {int(total//3600)} hours · {sum(len(v["videos"]) for v in videos)} videos</p></div>
+<a class="podcast-art" href="/feeds/" title="Subscribe to {e_(PODCAST)}"><img src="/covers/kingdom-of-our-lord-1400.jpg" width="260" height="260" alt="{e_(PODCAST)} podcast"><span>Subscribe to the podcast</span></a></section>
 <section class="wrap"><h2>Latest recordings</h2><ol class="eps" data-list id="latest">{"".join(ep_li(e, True) for e in latest)}</ol>
 <h2>Audio series</h2><div class="grid">{"".join(series_card(s) for s in series)}</div>
 <h2>Video series</h2><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
@@ -140,9 +143,9 @@ def build_pages():
         page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)
-    body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1><p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). The "All recordings" feed includes everything.</p>
+    body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1><p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). The <em>{e_(PODCAST)}</em> feed includes every recording; the series feeds below are parts of the same podcast.</p>
 <table><thead><tr><th>Feed</th><th>URL</th><th></th></tr></thead><tbody>
-<tr><td><strong>All recordings</strong><div class="dim" style="font-size:.82rem">{len(episodes)} episodes</div></td><td><code>{BASE}/feeds/all.xml</code></td><td><button class="copy" data-copy="{BASE}/feeds/all.xml">Copy</button></td></tr>{rows}</tbody></table></section>'''
+<tr><td><strong>{e_(PODCAST)}</strong> <span class="dim">(all recordings)</span><div class="dim" style="font-size:.82rem">{len(episodes)} episodes</div></td><td><code>{BASE}/feeds/all.xml</code></td><td><button class="copy" data-copy="{BASE}/feeds/all.xml">Copy</button></td></tr>{rows}</tbody></table></section>'''
     page('/feeds/', 'Podcast feeds', body, 'RSS podcast feeds for every lecture series by Kevin R. Amundson.', active='feeds')
     page('/search/', 'Search', '<section class="hero wrap"><div class="bar"></div><h1>Search</h1><div id="search"></div></section>', 'Search all lectures and videos.', active='search')
     page('/404.html', 'Not found', '<section class="hero wrap"><div class="bar"></div><h1>Not found</h1><p>That page does not exist. <a href="/">Go home</a>.</p></section>', index=False)
@@ -155,7 +158,7 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
         s = S[e['series']]
         t = e['title'] if path != '/feeds/all.xml' else f"{s['title']}: {e['title']}"
         d = f"{e['title']} — {s['title']}{(' (' + e['label'] + ')') if e['label'] else ''}. {e['speaker']}. Recorded {nice_date(e['date'])}. {s['description']}"
-        items.append(f'''<item><title>{xesc(t)}</title><description>{xesc(d)}</description><itunes:summary>{xesc(d)}</itunes:summary><link>{BASE}{e["url"]}</link>
+        items.append(f'''<item><title>{xesc(t)}</title><description>{xesc(d.replace('&', '&amp;'))}</description><itunes:summary>{xesc(d)}</itunes:summary><link>{BASE}{e["url"]}</link>
 <guid isPermaLink="false">{BASE}{e["audio"]}</guid><pubDate>{rfc822(e["date"])}</pubDate>
 <enclosure url="{xesc(BASE + e["audio"])}" length="{e["bytes"]}" type="{"audio/mpeg" if e["mime"] == "audio/mpeg" else "audio/x-m4a"}"/>
 <itunes:duration>{int(e["duration"])}</itunes:duration><itunes:explicit>false</itunes:explicit><itunes:episodeType>full</itunes:episodeType>{f"<itunes:episode>{e['seq']}</itunes:episode>" if path != '/feeds/all.xml' else ''}
@@ -164,7 +167,7 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel><title>{xesc(title)}</title><link>{BASE}{link}</link><atom:link href="{BASE}{path}" rel="self" type="application/rss+xml"/>
 <description>{xesc(desc)}</description><itunes:summary>{xesc(desc)}</itunes:summary><language>en-us</language><copyright>© Kevin R. Amundson</copyright>
-<itunes:author>{xesc(AUTHOR)}</itunes:author><itunes:owner><itunes:name>{xesc(AUTHOR)}</itunes:name></itunes:owner>
+<itunes:author>{xesc(AUTHOR)}</itunes:author><itunes:owner><itunes:name>{xesc(AUTHOR)}</itunes:name><itunes:email>{OWNER_EMAIL}</itunes:email></itunes:owner><managingEditor>{OWNER_EMAIL} ({xesc(AUTHOR)})</managingEditor>
 <itunes:image href="{BASE}{cover}"/><image><url>{BASE}{cover}</url><title>{xesc(title)}</title><link>{BASE}{link}</link></image>
 {cats}<itunes:explicit>false</itunes:explicit><itunes:type>{kind}</itunes:type><podcast:locked>no</podcast:locked>
 <lastBuildDate>{email.utils.format_datetime(datetime.datetime.now(TZ))}</lastBuildDate>
@@ -175,9 +178,9 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
 def build_feeds():
     for s in series:
         kind = 'serial' if s['id'].startswith('rst-') or s['id'] == 'pentateuch' else 'episodic'
-        feed(s['feed'], f"{s['title']} — Kevin R. Amundson", s['description'] + ' Lectures by Kevin R. Amundson.', s['eps'], s['cover'], s['url'], s['category'], kind)
-    feed('/feeds/all.xml', 'Kevin R. Amundson — Lectures & Recordings', 'Every lecture and recording by Kevin R. Amundson: Redemption School of Theology courses in theology and history, Sunday school, and talks.',
-         sorted(episodes, key=lambda e: e['date']), '/covers/all.jpg', '/', 'Christianity')
+        feed(s['feed'], f"{PODCAST}: {s['title']}", s['description'] + ' Lectures by Kevin R. Amundson.', s['eps'], s['cover'], s['url'], s['category'], kind)
+    feed('/feeds/all.xml', PODCAST, 'Every lecture and recording by Kevin R. Amundson: Redemption School of Theology courses in theology and history, Sunday school, and talks.',
+         sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1400.jpg', '/', 'Christianity')
 
 def build_misc():
     urls = ['/', '/series/', '/video/', '/feeds/', '/search/'] + [s['url'] for s in series] + [e['url'] for e in episodes] + [f'/video/{v["id"]}/' for v in videos]

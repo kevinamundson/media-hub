@@ -49,13 +49,12 @@ if __name__ == '__main__':
     for s in series:
         kicker = 'Redemption School of Theology' if s['id'].startswith('rst-') else 'Lectures & Recordings'
         cover(s['title'], kicker, s['subtitle'].split(' · ')[-1], os.path.join(OUT, s['id'] + '.jpg'))
-    cover('Lectures, Recordings & Video', 'Media Hub', 'media.kevinamundson.me', os.path.join(OUT, 'all.jpg'))
-    # 1200x630 social image
-    im, d = bg(1200, 630); m = 80
-    d.rectangle([m, m, m + 110, m + 10], fill=RED)
-    d.text((m, m + 36), 'KEVIN R. AMUNDSON', font=font('Inter.ttf', 34, 600), fill=MUTED)
-    d.text((m, 250), 'Media Hub', font=font('Vollkorn.ttf', 120, 700), fill=FG)
-    d.text((m, 420), 'Lectures · Recordings · Video · Podcast feeds', font=font('Inter.ttf', 38, 400), fill=MUTED)
-    d.text((m, 520), 'media.kevinamundson.me', font=font('Inter.ttf', 32, 700), fill=(200, 60, 70))
+    # Official podcast cover (supplied by Kevin as 500x500); Apple needs >=1400px, so upscale with Lanczos.
+    src = Image.open(os.path.join(ROOT, 'static', 'brand', 'kingdom-cover-original.png')).convert('RGB')
+    art = src.resize((1400, 1400), Image.LANCZOS)
+    art.save(os.path.join(OUT, 'kingdom-of-our-lord-1400.jpg'), 'JPEG', quality=92, optimize=True, progressive=True)
+    # 1200x630 social image: the podcast cover centered on its own off-white background
+    im = Image.new('RGB', (1200, 630), src.getpixel((4, 4)))
+    im.paste(src.resize((630, 630), Image.LANCZOS), (285, 0))
     im.save(os.path.join(OUT, 'og.jpg'), 'JPEG', quality=88, optimize=True)
     print('covers written to', OUT)
