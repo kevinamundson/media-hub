@@ -1,0 +1,12 @@
+# build output and media never go in git
+dist/
+node_modules/
+media/
+files/
+*.mp3
+*.m4a
+*.mp4
+*.wav
+.wrangler/
+.dev.vars
+.env*

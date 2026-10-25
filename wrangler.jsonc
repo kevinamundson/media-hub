@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "media-hub",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-25",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    // audio goes through the Worker so Range requests get 206 Partial Content
+    "run_worker_first": ["/audio/*"]
+  },
+  "routes": [{ "pattern": "media.kevinamundson.me", "custom_domain": true }],
+  "observability": { "enabled": true }
+}

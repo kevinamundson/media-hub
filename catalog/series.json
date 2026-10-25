@@ -1,0 +1,128 @@
+[
+  {
+    "id": "rst-2026-hermeneutics-exegesis",
+    "title": "Hermeneutics + Exegesis (2026)",
+    "subtitle": "Redemption School of Theology · Fall 2026",
+    "description": "Fall 2026 Redemption School of Theology course on reading and interpreting Scripture: canon, presuppositions, bibliology, observation, and case studies.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/rst-podcast",
+    "cover": "/covers/rst-2026-hermeneutics-exegesis.jpg"
+  },
+  {
+    "id": "rst-2025-world-history-ad",
+    "title": "World History A.D.",
+    "subtitle": "Redemption School of Theology · 2025",
+    "description": "The spread of Christendom across continents: saints and settlements, the Church in East and West, the Puritans, and missions to Asia and Africa. Redemption School of Theology (2025).",
+    "category": "History",
+    "source": "https://www.redemptionrochester.com/2025-world-history-ad-audio",
+    "cover": "/covers/rst-2025-world-history-ad.jpg"
+  },
+  {
+    "id": "rst-2025-world-history-bc",
+    "title": "World History B.C.",
+    "subtitle": "Redemption School of Theology · 2025",
+    "description": "Ancient history through a biblical lens: chronology, giants, genealogies, language, architecture, navigation, Israel, and Egypt. Redemption School of Theology (2025).",
+    "category": "History",
+    "source": "https://www.redemptionrochester.com/2025-world-history-b-c-audio",
+    "cover": "/covers/rst-2025-world-history-bc.jpg"
+  },
+  {
+    "id": "rst-2024-missiology",
+    "title": "Missiology",
+    "subtitle": "Redemption School of Theology · 2024",
+    "description": "The mission of God (missio Dei), the commissions of Christ, and the work of missions across cultures. Redemption School of Theology (2024).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2024-missiology-audio",
+    "cover": "/covers/rst-2024-missiology.jpg"
+  },
+  {
+    "id": "rst-2024-apologetics-worldview",
+    "title": "Apologetics + Worldview",
+    "subtitle": "Redemption School of Theology · 2024",
+    "description": "Revelational epistemology, Christ's lordship over every sphere, and a biblical worldview applied to law, government, and culture. Redemption School of Theology (2024).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2024-apologetics-worldview-audio",
+    "cover": "/covers/rst-2024-apologetics-worldview.jpg"
+  },
+  {
+    "id": "rst-2023-biblical-theology",
+    "title": "Biblical Theology",
+    "subtitle": "Redemption School of Theology · 2023",
+    "description": "Tracing the great themes of Scripture from Eden to the New Jerusalem. Redemption School of Theology (2023).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2023-biblical-theology-audio",
+    "cover": "/covers/rst-2023-biblical-theology.jpg"
+  },
+  {
+    "id": "rst-2023-systematic-theology",
+    "title": "Systematic Theology",
+    "subtitle": "Redemption School of Theology · 2023",
+    "description": "Doctrine of God, revelation, creation and providence, covenant, and the person and work of Christ. Redemption School of Theology (2023).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2023-systematic-theology-audio",
+    "cover": "/covers/rst-2023-systematic-theology.jpg"
+  },
+  {
+    "id": "rst-2022-hermeneutics-exegesis",
+    "title": "Hermeneutics + Exegesis (2022)",
+    "subtitle": "Redemption School of Theology · 2022",
+    "description": "Principles and practice of interpreting Scripture: grammatical, historical, and theological interpretation, and reading the Old and New Testaments. Redemption School of Theology (2022).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2022-hermeneutics-exegesis-audio",
+    "cover": "/covers/rst-2022-hermeneutics-exegesis.jpg"
+  },
+  {
+    "id": "rst-2022-christian-history",
+    "title": "Christian History",
+    "subtitle": "Redemption School of Theology · 2022",
+    "description": "A survey of the history of the Church from the apostolic era through the modern age, taught at the Redemption School of Theology (2022).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2022-christian-history-audio",
+    "cover": "/covers/rst-2022-christian-history.jpg"
+  },
+  {
+    "id": "pentateuch",
+    "title": "Pentateuch",
+    "subtitle": "Adult Sunday School · 2024–2025",
+    "description": "Sunday school lectures through Genesis, Exodus, and the sacrificial system of the Law.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/pentateuch-audio",
+    "cover": "/covers/pentateuch.jpg"
+  },
+  {
+    "id": "christianity-and-civil-engagement",
+    "title": "Christianity and Civil Engagement",
+    "subtitle": "Redemption City Church · 2024",
+    "description": "The history of civil liberty and the Christian's duty in the civil sphere, with Q&A.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/civil-government-audio",
+    "cover": "/covers/christianity-and-civil-engagement.jpg"
+  },
+  {
+    "id": "manhood-breakfast",
+    "title": "Manhood Breakfast",
+    "subtitle": "Redemption Men · 2022–2026",
+    "description": "Talks for men on masculinity, headship, courage, and godly action.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/manhood-breakfast-audio",
+    "cover": "/covers/manhood-breakfast.jpg"
+  },
+  {
+    "id": "arise-and-build",
+    "title": "Arise and Build",
+    "subtitle": "Redemption City Church · 2023",
+    "description": "The Mission of God: Build. From the Arise and Build series (2023).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/arise-and-build-audio",
+    "cover": "/covers/arise-and-build.jpg"
+  },
+  {
+    "id": "christ-over-all",
+    "title": "Christ Over All",
+    "subtitle": "Living for Christ in the Family, Church, and Civil Arena · 2021",
+    "description": "Living for Christ in the Family, Church, and Civil Arena (2021).",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/christ-over-all",
+    "cover": "/covers/christ-over-all.jpg"
+  }
+]
