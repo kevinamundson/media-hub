@@ -1,5 +1,5 @@
 """Generate podcast cover art (1400x1400 JPEG) for each series plus a default OG image."""
-import json, os, textwrap
+import json, os, shutil, textwrap
 from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 F = os.path.join(ROOT, 'static', 'fonts')
@@ -49,10 +49,9 @@ if __name__ == '__main__':
     for s in series:
         kicker = 'Redemption School of Theology' if s['id'].startswith('rst-') else 'Lectures & Recordings'
         cover(s['title'], kicker, s['subtitle'].split(' · ')[-1], os.path.join(OUT, s['id'] + '.jpg'))
-    # Official podcast cover (supplied by Kevin as 500x500); Apple needs >=1400px, so upscale with Lanczos.
-    src = Image.open(os.path.join(ROOT, 'static', 'brand', 'kingdom-cover-original.png')).convert('RGB')
-    art = src.resize((1400, 1400), Image.LANCZOS)
-    art.save(os.path.join(OUT, 'kingdom-of-our-lord-1400.jpg'), 'JPEG', quality=92, optimize=True, progressive=True)
+    # Official podcast cover supplied by Kevin (1500x1500 RGB JPEG), used as-is.
+    shutil.copyfile(os.path.join(ROOT, 'static', 'brand', 'kingdom-cover-1500.jpg'), os.path.join(OUT, 'kingdom-of-our-lord-1500.jpg'))
+    src = Image.open(os.path.join(ROOT, 'static', 'brand', 'kingdom-cover-1500.jpg')).convert('RGB')
     # 1200x630 social image: the podcast cover centered on its own off-white background
     im = Image.new('RGB', (1200, 630), src.getpixel((4, 4)))
     im.paste(src.resize((630, 630), Image.LANCZOS), (285, 0))

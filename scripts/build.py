@@ -61,7 +61,7 @@ def page(path, title, body, desc='', image='/covers/og.jpg', active='', og_type=
 <span class="dim">Lectures recorded at Redemption City Church and the Redemption School of Theology, shared with permission.</span></div></footer>
 <div id="queue" aria-label="Queue"></div>
 <div id="player" role="region" aria-label="Audio player"><div class="wrap">
- <div class="now"><img id="p-cover" alt="" width="52" height="52" src="/covers/kingdom-of-our-lord-1400.jpg"><div><a id="p-title" class="t" href="#">—</a><br><a id="p-series" class="s" href="#"></a></div></div>
+ <div class="now"><img id="p-cover" alt="" width="52" height="52" src="/covers/kingdom-of-our-lord-1500.jpg"><div><a id="p-title" class="t" href="#">—</a><br><a id="p-series" class="s" href="#"></a></div></div>
  <div class="ctl"><button id="p-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
   <button id="p-back" class="skip" aria-label="Back 15 seconds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><text x="8" y="16" font-size="8" fill="currentColor" stroke="none" font-family="Inter">15</text></svg></button>
   <button id="p-pp" class="pp" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
@@ -102,7 +102,7 @@ def build_pages():
 <h1>Lectures, recordings &amp; video</h1><p>Every lecture and recording by Kevin R. Amundson in one place: theology and history courses from the Redemption School of Theology, talks, and the ExploreHistory.Live video series. Listen here, or subscribe in any podcast app.</p>
 <div class="actions"><a class="btn" href="/series/">Browse audio</a><a class="btn ghost" href="/video/">Watch video</a><a class="btn ghost" href="/feeds/">Subscribe</a></div>
 <p class="dim" style="font-size:.9rem;margin-top:16px">{len(episodes)} audio recordings · {len(series)} series · {int(total//3600)} hours · {sum(len(v["videos"]) for v in videos)} videos</p></div>
-<a class="podcast-art" href="/feeds/" title="Subscribe to {e_(PODCAST)}"><img src="/covers/kingdom-of-our-lord-1400.jpg" width="260" height="260" alt="{e_(PODCAST)} podcast"><span>Subscribe to the podcast</span></a></section>
+<a class="podcast-art" href="/feeds/" title="Subscribe to {e_(PODCAST)}"><img src="/covers/kingdom-of-our-lord-1500.jpg" width="260" height="260" alt="{e_(PODCAST)} podcast"><span>Subscribe to the podcast</span></a></section>
 <section class="wrap"><h2>Latest recordings</h2><ol class="eps" data-list id="latest">{"".join(ep_li(e, True) for e in latest)}</ol>
 <h2>Audio series</h2><div class="grid">{"".join(series_card(s) for s in series)}</div>
 <h2>Video series</h2><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
@@ -180,7 +180,7 @@ def build_feeds():
         kind = 'serial' if s['id'].startswith('rst-') or s['id'] == 'pentateuch' else 'episodic'
         feed(s['feed'], f"{PODCAST}: {s['title']}", s['description'] + ' Lectures by Kevin R. Amundson.', s['eps'], s['cover'], s['url'], s['category'], kind)
     feed('/feeds/all.xml', PODCAST, 'Every lecture and recording by Kevin R. Amundson: Redemption School of Theology courses in theology and history, Sunday school, and talks.',
-         sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1400.jpg', '/', 'Christianity')
+         sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1500.jpg', '/', 'Christianity')
 
 def build_misc():
     urls = ['/', '/series/', '/video/', '/feeds/', '/search/'] + [s['url'] for s in series] + [e['url'] for e in episodes] + [f'/video/{v["id"]}/' for v in videos]
