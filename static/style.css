@@ -87,3 +87,11 @@ footer.site{border-top:1px solid var(--line);color:var(--dim);font-size:.88rem;p
 }
 @media (max-width:380px){header.site .wrap{gap:8px}.brand{font-size:.85rem}nav.main{gap:7px;font-size:.76rem}}
 .hero.home{display:grid;grid-template-columns:1fr 260px;gap:44px;align-items:center}.podcast-art{display:block;text-align:center;color:var(--muted);font-size:.85rem;text-decoration:none}.podcast-art img{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}.podcast-art:hover span{color:var(--fg,#fafafa)}@media (max-width:760px){.hero.home{grid-template-columns:1fr;gap:24px}.podcast-art{max-width:200px}}
+/* Focus + search highlight in the red theme (no browser-default blue) */
+:root{accent-color:var(--red2);-webkit-tap-highlight-color:rgba(200,50,63,.25)}
+:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
+.pagefind-ui .pagefind-ui__search-input{caret-color:var(--red2)}
+.pagefind-ui .pagefind-ui__search-input:focus,.pagefind-ui .pagefind-ui__search-input:focus-visible{outline:2px solid var(--red2);outline-offset:2px;border-color:var(--red2)}
+.pagefind-ui .pagefind-ui__search-clear:focus-visible,.pagefind-ui .pagefind-ui__button:focus-visible,.pagefind-ui a:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
+.pagefind-ui.pagefind-ui--reset mark,#search .pagefind-ui mark{background:var(--red2);color:#fff;border-radius:3px;padding:0 2px}
+::selection{background:var(--red2);color:#fff}
