@@ -48,14 +48,14 @@ def page(path, title, body, desc='', image='/covers/og.jpg', active='', og_type=
     nav = ''.join(f'<a href="{h}"{" aria-current" if active == k else ""}{c}>{t}</a>' for k, h, t, c in [
         ('home', '/', 'Home', ''), ('audio', '/series/', 'Audio', ''), ('video', '/video/', 'Video', ''), ('feeds', '/feeds/', 'Podcast feeds', ' class="opt"'), ('search', '/search/', 'Search', '')])
     full_title = title if title == SITE else f"{title} · {SITE}"
-    doc = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    doc = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><script>document.documentElement.classList.add('js')</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e_(full_title)}</title><meta name="description" content="{e_(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{e_(SITE)}"><meta property="og:title" content="{e_(title)}"><meta property="og:description" content="{e_(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#171717">{'' if index else '<meta name="robots" content="noindex">'}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/Vollkorn.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{e_(PODCAST)}" href="{BASE}/feeds/all.xml">{extra_head}
 </head><body>
-<header class="site"><div class="wrap"><a class="brand" href="/">Kevin Amundson <span>Media</span></a><nav class="main">{nav}</nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/">Kevin Amundson <span>Media</span></a><nav class="main" aria-label="Main"><button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-items" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="nav-items" id="nav-items">{nav}<span class="sep" aria-hidden="true">|</span><a href="https://thekingdomofourlord.substack.com/">Substack</a></div></nav></div></header>
 <main>{body}</main>
 <footer class="site"><div class="wrap">© {datetime.date.today().year} Kevin R. Amundson · <a href="https://kevinamundson.me">kevinamundson.me</a> · <a href="https://www.youtube.com/c/KevinAmundson">YouTube</a> · <a href="/feeds/">Podcast feeds</a><br>
 <span class="dim">Lectures recorded at Redemption City Church and the Redemption School of Theology, shared with permission.</span></div></footer>

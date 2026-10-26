@@ -105,6 +105,16 @@
   });
   window.addEventListener('popstate', () => go(location.href, false));
 
+  /* Mobile menu: toggle button, Esc / link click / outside click close it. */
+  const nav = $('nav.main'), menuBtn = $('.menu-btn', nav);
+  if (menuBtn) {
+    const setMenu = o => { nav.classList.toggle('open', o); menuBtn.setAttribute('aria-expanded', String(o)); };
+    menuBtn.onclick = () => setMenu(!nav.classList.contains('open'));
+    $$('.nav-items a', nav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('click', ev => { if (nav.classList.contains('open') && !nav.contains(ev.target)) setMenu(false); });
+  }
+
   showSpeed();
   if (queue.length && queue[idx]) load(idx, false);
   initPage();
