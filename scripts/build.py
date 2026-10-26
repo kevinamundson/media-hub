@@ -199,6 +199,11 @@ def build_feeds():
         feed(s['feed'], f"{PODCAST}: {s['title']}", s['description'] + ' Lectures by Kevin R. Amundson.', s['eps'], s['cover'], s['url'], s['category'], kind)
     feed('/feeds/all.xml', PODCAST, 'Every lecture and recording by Kevin R. Amundson: Redemption School of Theology courses in theology and history, Sunday school, and talks.',
          sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1500.jpg', '/', 'Christianity')
+    # Identical copy at /feeds/all.rss (only atom:link self differs) for directories that prefer .rss
+    src = open(os.path.join(DIST, 'feeds/all.xml')).read()
+    selfx = f'<atom:link href="{BASE}/feeds/all.xml" rel="self"'
+    assert src.count(selfx) == 1
+    open(os.path.join(DIST, 'feeds/all.rss'), 'w').write(src.replace(selfx, f'<atom:link href="{BASE}/feeds/all.rss" rel="self"'))
 
 def build_misc():
     urls = ['/', '/series/', '/video/', '/feeds/', '/search/'] + [s['url'] for s in series] + [e['url'] for e in episodes] + [f'/video/{v["id"]}/' for v in videos]
@@ -213,7 +218,7 @@ def build_misc():
   Cache-Control: public, max-age=604800
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
-''' + ''.join(f'/feeds/{n}.xml\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=900\n  Access-Control-Allow-Origin: *\n' for n in ['all'] + [s['id'] for s in series]) + '''/*
+''' + ''.join(f'/feeds/{n}\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=900\n  Access-Control-Allow-Origin: *\n' for n in ['all.xml', 'all.rss'] + [s['id'] + '.xml' for s in series]) + '''/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
 ''')
