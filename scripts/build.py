@@ -180,7 +180,7 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
 <guid isPermaLink="false">{BASE}{e["audio"]}</guid><pubDate>{rfc822(e["date"])}</pubDate>
 <enclosure url="{xesc(BASE + e["audio"])}" length="{e["bytes"]}" type="{"audio/mpeg" if e["mime"] == "audio/mpeg" else "audio/x-m4a"}"/>
 <itunes:duration>{int(e["duration"])}</itunes:duration><itunes:explicit>false</itunes:explicit><itunes:episodeType>full</itunes:episodeType>{f"<itunes:episode>{e['seq']}</itunes:episode>" if path != '/feeds/all.xml' else ''}
-<itunes:image href="{BASE}{s["cover"]}"/><itunes:author>{xesc(AUTHOR)}</itunes:author></item>''')
+{'' if path == '/feeds/all.xml' else f'<itunes:image href="{BASE}{s["cover"]}"/>'}<itunes:author>{xesc(AUTHOR)}</itunes:author></item>''')
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel><title>{xesc(title)}</title><link>{BASE}{link}</link><atom:link href="{BASE}{path}" rel="self" type="application/rss+xml"/>
