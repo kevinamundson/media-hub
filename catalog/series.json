@@ -6,7 +6,8 @@
     "description": "Fall 2026 Redemption School of Theology course on reading and interpreting Scripture: canon, presuppositions, bibliology, observation, and case studies.",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/rst-podcast",
-    "cover": "/covers/rst-2026-hermeneutics-exegesis.jpg"
+    "cover": "/covers/rst-2026-hermeneutics-exegesis.png",
+    "cover_original": "supplied by Kevin Amundson (square PNG, 2026-10-26)"
   },
   {
     "id": "rst-2025-world-history-ad",
@@ -15,7 +16,8 @@
     "description": "The spread of Christendom across continents: saints and settlements, the Church in East and West, the Puritans, and missions to Asia and Africa. Redemption School of Theology (2025).",
     "category": "History",
     "source": "https://www.redemptionrochester.com/2025-world-history-ad-audio",
-    "cover": "/covers/rst-2025-world-history-ad.jpg"
+    "cover": "/covers/rst-2025-world-history-ad.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1754412770677-LR5H5CV9SX2N1GE42DDU/World+History+AD+-+Audio.png"
   },
   {
     "id": "rst-2025-world-history-bc",
@@ -24,7 +26,8 @@
     "description": "Ancient history through a biblical lens: chronology, giants, genealogies, language, architecture, navigation, Israel, and Egypt. Redemption School of Theology (2025).",
     "category": "History",
     "source": "https://www.redemptionrochester.com/2025-world-history-b-c-audio",
-    "cover": "/covers/rst-2025-world-history-bc.jpg"
+    "cover": "/covers/rst-2025-world-history-bc.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1735264765915-F6GCWEFNJWQH5TDLLZS6/RST_WHBC_album+%281%29.png"
   },
   {
     "id": "rst-2024-missiology",
@@ -33,7 +36,8 @@
     "description": "The mission of God (missio Dei), the commissions of Christ, and the work of missions across cultures. Redemption School of Theology (2024).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2024-missiology-audio",
-    "cover": "/covers/rst-2024-missiology.jpg"
+    "cover": "/covers/rst-2024-missiology.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1764529166286-52ZLP0D7J0PH69U9WMDX/RST.Logo.2024.Missiology.square.png"
   },
   {
     "id": "rst-2024-apologetics-worldview",
@@ -42,7 +46,8 @@
     "description": "Revelational epistemology, Christ's lordship over every sphere, and a biblical worldview applied to law, government, and culture. Redemption School of Theology (2024).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2024-apologetics-worldview-audio",
-    "cover": "/covers/rst-2024-apologetics-worldview.jpg"
+    "cover": "/covers/rst-2024-apologetics-worldview.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1701239009484-1DZTUQ3ELIHEXCCJ9LT1/2024+Apologetics+%2B+Worldview+Audio.png"
   },
   {
     "id": "rst-2023-biblical-theology",
@@ -51,7 +56,8 @@
     "description": "Tracing the great themes of Scripture from Eden to the New Jerusalem. Redemption School of Theology (2023).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2023-biblical-theology-audio",
-    "cover": "/covers/rst-2023-biblical-theology.jpg"
+    "cover": "/covers/rst-2023-biblical-theology.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1690318524503-TG0ORB7MF88UAJAVF6O2/2023+Biblical+Theology+audio.png"
   },
   {
     "id": "rst-2023-systematic-theology",
@@ -60,7 +66,8 @@
     "description": "Doctrine of God, revelation, creation and providence, covenant, and the person and work of Christ. Redemption School of Theology (2023).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2023-systematic-theology-audio",
-    "cover": "/covers/rst-2023-systematic-theology.jpg"
+    "cover": "/covers/rst-2023-systematic-theology.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1672531961364-7O2F9Q45XOOHEQTFWZJH/2023+Systematic+Theology+audio.png"
   },
   {
     "id": "rst-2022-hermeneutics-exegesis",
@@ -69,7 +76,8 @@
     "description": "Principles and practice of interpreting Scripture: grammatical, historical, and theological interpretation, and reading the Old and New Testaments. Redemption School of Theology (2022).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2022-hermeneutics-exegesis-audio",
-    "cover": "/covers/rst-2022-hermeneutics-exegesis.jpg"
+    "cover": "/covers/rst-2022-hermeneutics-exegesis.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1672532351810-DOXB8OHCIM0Y1WH6AG0M/2022+Hermeneutics+%2B+Exegesis+audio.png"
   },
   {
     "id": "rst-2022-christian-history",
@@ -78,7 +86,8 @@
     "description": "A survey of the history of the Church from the apostolic era through the modern age, taught at the Redemption School of Theology (2022).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/2022-christian-history-audio",
-    "cover": "/covers/rst-2022-christian-history.jpg"
+    "cover": "/covers/rst-2022-christian-history.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1672532738234-J95S5RM7UOAKHMQBT7LA/2022+Christian+History+audio.png"
   },
   {
     "id": "pentateuch",
@@ -87,7 +96,8 @@
     "description": "Sunday school lectures through Genesis, Exodus, and the sacrificial system of the Law.",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/pentateuch-audio",
-    "cover": "/covers/pentateuch.jpg"
+    "cover": "/covers/pentateuch.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1759069505034-4G1R8WEZ0RWZ4GMEYVNG/cover.png"
   },
   {
     "id": "christianity-and-civil-engagement",
@@ -96,7 +106,8 @@
     "description": "The history of civil liberty and the Christian's duty in the civil sphere, with Q&A.",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/civil-government-audio",
-    "cover": "/covers/christianity-and-civil-engagement.jpg"
+    "cover": "/covers/christianity-and-civil-engagement.jpg",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1728303743805-0Y9K037EBA82PSDZM2FL/christianitycivilengagment.jpg"
   },
   {
     "id": "manhood-breakfast",
@@ -105,7 +116,8 @@
     "description": "Talks for men on masculinity, headship, courage, and godly action.",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/manhood-breakfast-audio",
-    "cover": "/covers/manhood-breakfast.jpg"
+    "cover": "/covers/manhood-breakfast.jpg",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1662985993950-3QN68REV9C9V1RPCE33Y/Manhood+Breakfast+Album+Cover.jpg"
   },
   {
     "id": "arise-and-build",
@@ -114,7 +126,8 @@
     "description": "The Mission of God: Build. From the Arise and Build series (2023).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/arise-and-build-audio",
-    "cover": "/covers/arise-and-build.jpg"
+    "cover": "/covers/arise-and-build.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1694574633573-1JS2KSBPVM2X49BZ52MF/folder.png"
   },
   {
     "id": "christ-over-all",
@@ -123,7 +136,8 @@
     "description": "Living for Christ in the Family, Church, and Civil Arena (2021).",
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/christ-over-all",
-    "cover": "/covers/christ-over-all.jpg"
+    "cover": "/covers/christ-over-all.jpg",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1638232036175-EASFJXSR4Y11ASXDB7ID/christoverall.jpg"
   },
   {
     "id": "evangelism-and-biopics",
