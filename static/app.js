@@ -21,8 +21,8 @@
     const e = cur(); audio.src = e.src; audio.playbackRate = LS.get('speed', 1);
     const start = pos(e.src); const seekTo = () => { if (start) audio.currentTime = start; audio.removeEventListener('loadedmetadata', seekTo); };
     audio.addEventListener('loadedmetadata', seekTo);
-    ui.t.textContent = e.title; ui.t.href = e.url; ui.s.textContent = e.series; ui.s.href = e.seriesUrl; ui.img.src = e.cover;
-    P.classList.add('on'); renderQueue(); mark();
+    ui.t.textContent = e.title; ui.t.title = e.title; ui.t.href = e.url; ui.s.textContent = e.series; ui.s.title = e.series; ui.s.href = e.seriesUrl; ui.img.src = e.cover;
+    P.classList.add('on'); document.documentElement.classList.add('player-on'); renderQueue(); mark();
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: e.title, artist: 'Kevin R. Amundson', album: e.series, artwork: [{ src: e.cover, sizes: '1400x1400', type: 'image/jpeg' }] });
     if (autoplay) audio.play().catch(() => {});
   }
