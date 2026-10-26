@@ -133,7 +133,7 @@ def build_pages():
                  extra_head=f'<meta property="og:audio" content="{BASE}{e["audio"]}"><meta property="og:audio:type" content="{e["mime"]}">')
 
     body = f'''<section class="hero wrap"><div class="bar"></div><h1>Video</h1><p>ExploreHistory.Live series, talks and guest appearances, hosted on YouTube. Tap any video to play it here.</p>
-<div class="actions"><a class="btn ghost" href="https://www.youtube.com/c/KevinAmundson">YouTube channel</a></div><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
+<div class="actions"><a class="btn ghost" href="https://www.youtube.com/playlist?list=PLP7nXp5O0E-Q">YouTube channel</a></div><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
     page('/video/', 'Video', body, 'ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
     for v in videos:
         # v["playlist"] may be null for standalone videos (no YouTube playlist); v["links"] holds externally hosted
