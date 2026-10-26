@@ -41,7 +41,8 @@ npx wrangler deploy
 - `catalog/video.json` groups may have `"playlist": null` (standalone videos; `source` links the original page) and a
   `links` list of externally hosted audio (guest appearances). Linked audio streams from the original host and is
   never copied into `/audio/` or added to the podcast feeds.
-- Files over 25 MiB can't be served as Workers assets; they're left out until there's an R2/re-encode decision.
+- Files over 25 MiB can't be served as Workers assets. Re-encode them to fit (Psalm 38 and Psalm 44 are 64 kbps CBR mono
+  44.1 kHz MP3s made from the 156 kbps originals with `ffmpeg -ac 1 -ar 44100 -c:a libmp3lame -b:a 64k -map_metadata 0`).
 
 ## Moving audio to R2 later
 
