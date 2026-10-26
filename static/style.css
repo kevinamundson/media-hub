@@ -154,5 +154,7 @@ html.player-on{scroll-padding-bottom:calc(var(--player) + env(safe-area-inset-bo
 .listen{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin:20px 0 8px;padding:16px var(--g);background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:var(--r)}
 .listen-k{color:var(--red2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
 .listen ul{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
-.listen-btn{min-height:44px;padding:10px 20px;font-size:1rem}
+.listen-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 20px 8px 14px;border-radius:999px;background:#fff;color:#111;border:1px solid #d6d6d6;font:600 1rem Inter,sans-serif;text-decoration:none;transition:background .15s,border-color .15s}
+.listen-btn:hover{background:#f1f1f1;border-color:#fff;color:#111}
+.listen-btn .brand-ic{flex:none;width:24px;height:24px;margin:2px}
 @media (max-width:480px){.listen{flex-direction:column;align-items:stretch}.listen ul{flex-direction:column}.listen-btn{justify-content:center;width:100%}}
