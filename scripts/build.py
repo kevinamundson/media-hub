@@ -121,7 +121,7 @@ def build_pages():
     latest = sorted(episodes, key=lambda e: e['date'], reverse=True)[:8]
     body = f'''<section class="hero wrap home"><div><div class="bar"></div><div class="kicker">Media Producer · Writer · Historian · Elder</div>
 <h1>Lectures, recordings &amp; video</h1><p>Every lecture and recording by Kevin R. Amundson in one place: theology and history courses from the Redemption School of Theology, talks, and the ExploreHistory.Live video series. Listen here, or subscribe in any podcast app.</p>
-<div class="actions"><a class="btn" href="/series/">Browse audio</a><a class="btn ghost" href="/video/">Watch video</a><a class="btn ghost" href="/feeds/">Subscribe</a></div>
+<div class="actions" data-pagefind-ignore><a class="btn" href="/series/">Browse audio</a><a class="btn ghost" href="/video/">Watch video</a><a class="btn ghost" href="/feeds/">Subscribe</a></div>
 <p class="dim" style="font-size:.9rem;margin-top:16px">{len(episodes)} audio recordings · {len(series)} series · {int(total//3600)} hours · {sum(len(v["videos"]) for v in videos)} videos</p></div>
 <a class="podcast-art" href="/feeds/" title="Subscribe to {e_(PODCAST)}"><img src="/covers/kingdom-of-our-lord-1500.jpg" width="260" height="260" alt="{e_(PODCAST)} podcast"><span>Subscribe to the podcast</span></a></section>
 <section class="wrap"><h2>Latest recordings</h2><ol class="eps" data-list id="latest">{"".join(ep_li(e, True) for e in latest)}</ol>
@@ -139,22 +139,22 @@ def build_pages():
         body = f'''<div class="wrap" data-pagefind-body><section class="series-head"><img src="{s["cover"]}" alt="{e_(s["title"])} cover" width="700" height="700">
 <div><div class="kicker">{e_(s["subtitle"])}</div><h1>{e_(s["title"])}</h1><p class="muted">{e_(s["description"])}</p>
 <p class="dim">{len(s["eps"])} recording{"s" if len(s["eps"]) != 1 else ""} · {human(s["seconds"])} · Kevin R. Amundson</p>
-<div class="actions"><button class="btn" data-playall="#eps">{PLAY[:4]} style="width:16px;height:16px"{PLAY[4:]} Play all</button><a class="btn ghost" href="{s["feed"]}">RSS feed</a><button class="btn ghost copy-feed" data-copy="{BASE}{s["feed"]}">Copy</button></div></div></section>
+<div class="actions" data-pagefind-ignore><button class="btn" data-playall="#eps">{PLAY[:4]} style="width:16px;height:16px"{PLAY[4:]} Play all</button><a class="btn ghost" href="{s["feed"]}">RSS feed</a><button class="btn ghost copy-feed" data-copy="{BASE}{s["feed"]}">Copy</button></div></div></section>
 <ol class="eps" data-list id="eps">{"".join(ep_li(e) for e in s["eps"])}</ol>
 <p class="dim" style="font-size:.85rem">Originally published at <a href="{e_(s["source"])}">{e_(s["source"].split("//")[1])}</a>.</p></div>'''
         page(s['url'], s['title'], body, s['description'], image=s['cover'], active='audio')
         for e in s['eps']:
             body = f'''<div class="wrap ep-page" data-pagefind-body><section class="series-head"><img src="{s["cover"]}" alt="" width="700" height="700">
 <div><div class="kicker"><a href="{s["url"]}" style="color:inherit;text-decoration:none">{e_(s["title"])}</a>{(" · " + e_(e["label"])) if e["label"] else ""}</div><h1>{e_(e["title"])}</h1>
-<dl class="meta"><dt>Speaker</dt><dd>{e_(e["speaker"])}</dd><dt>Recorded</dt><dd>{nice_date(e["date"])}</dd><dt>Length</dt><dd>{hms(e["duration"])}</dd><dt>File</dt><dd>{"MP3" if e["mime"] == "audio/mpeg" else "M4A"} · {mb(e["bytes"])}</dd></dl>
-<div class="actions"><button class="btn" data-playall="#one">{PLAY[:4]} style="width:16px;height:16px"{PLAY[4:]} Play</button><a class="btn ghost" href="{e["audio"]}" download>Download</a><a class="btn ghost" href="{s["url"]}">All in series</a></div></div></section>
+<dl class="meta"><dt>Speaker<span class="pf-sep">: </span></dt><dd>{e_(e["speaker"])}<span class="pf-sep">. </span></dd><dt>Recorded<span class="pf-sep">: </span></dt><dd>{nice_date(e["date"])}<span class="pf-sep">. </span></dd><dt>Length<span class="pf-sep">: </span></dt><dd>{hms(e["duration"])}<span class="pf-sep">. </span></dd><dt>File<span class="pf-sep">: </span></dt><dd>{"MP3" if e["mime"] == "audio/mpeg" else "M4A"} · {mb(e["bytes"])}<span class="pf-sep">. </span></dd></dl>
+<div class="actions" data-pagefind-ignore><button class="btn" data-playall="#one">{PLAY[:4]} style="width:16px;height:16px"{PLAY[4:]} Play</button><a class="btn ghost" href="{e["audio"]}" download>Download</a><a class="btn ghost" href="{s["url"]}">All in series</a></div></div></section>
 <ol class="eps" data-list id="one">{ep_li(e)}</ol>
 <p class="muted">{e_(s["description"])}</p></div>'''
             page(e['url'], e['title'], body, f"{e['title']} — {s['title']}. {e['speaker']}, {nice_date(e['date'])}.", image=s['cover'], og_type='music.song', active='audio',
                  extra_head=f'<meta property="og:audio" content="{BASE}{e["audio"]}"><meta property="og:audio:type" content="{e["mime"]}">')
 
     body = f'''<section class="hero wrap"><div class="bar"></div><h1>Video</h1><p>ExploreHistory.Live series, talks and guest appearances, hosted on YouTube. Tap any video to play it here.</p>
-<div class="actions"><a class="btn ghost" href="https://www.youtube.com/playlist?list=PLP7nXp5O0E-Q">YouTube channel</a></div><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
+<div class="actions" data-pagefind-ignore><a class="btn ghost" href="https://www.youtube.com/playlist?list=PLP7nXp5O0E-Q">YouTube channel</a></div><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
     page('/video/', 'Video', body, 'ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
     for v in videos:
         # v["playlist"] may be null for standalone videos (no YouTube playlist); v["links"] holds externally hosted
@@ -172,8 +172,8 @@ def build_pages():
             # a blurred backdrop, pre-rendered into a["thumb"]); the play button streams the original MP3 in the site player.
             acards = ''.join(f'<div class="acard"><div class="athumb" data-ep data-src="{e_(a["audio"])}" data-title="{e_(a["title"])}" data-series="{e_(a["show"])}" data-series-url="{url}" data-url="{url}" data-cover="{a["cover"]}" data-duration="{int(a["duration"])}">'
                           f'<img src="{a.get("thumb") or a["cover"]}" alt="{e_(a["show"])} show artwork" width="1280" height="720" loading="lazy">'
-                          f'<span class="abadge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/></svg>Audio</span>'
-                          f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><span class="cap">{e_(a["title"])}</span><span class="dur">{hms(a["duration"])}</span><div class="prog"><i></i></div></div>'
+                          f'<span class="abadge" data-pagefind-ignore><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/></svg>Audio</span>'
+                          f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><span class="cap">{e_(a["title"])}<span class="pf-sep">. </span></span><span class="dur">{hms(a["duration"])}<span class="pf-sep">.</span></span><div class="prog"><i></i></div></div>'
                           f'<div class="d">{nice_date(a["date"])} · {e_(a["show"])} · <a href="{e_(a["page"])}">Original episode page</a></div>'
                           f'<div class="d">{e_(a["speaker"])}</div></div>' for a in v['links'])
             links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show.</p><div class="vgrid" data-list id="links">{acards}</div>'
