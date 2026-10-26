@@ -14,6 +14,11 @@ BASE = 'https://media.kevinamundson.me'
 AUTHOR = 'Kevin R. Amundson'
 PODCAST = 'The Kingdom of Our Lord'
 OWNER_EMAIL = 'thekingdomofourlord@proton.me'  # public in feeds; used by Apple/Spotify ownership checks
+# Podcast directory listings shown as "Listen on" buttons on /feeds/. Add Spotify, Amazon Music, YouTube here when live.
+PLATFORMS = [
+    {'id': 'apple', 'name': 'Apple Podcasts', 'url': 'https://podcasts.apple.com/us/podcast/the-kingdom-of-our-lord/id6827272164'},
+]
+PODCAST_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="11" r="2.2"/><path d="M12 14.5v6"/><path d="M8.5 15.5a5 5 0 1 1 7 0"/><path d="M6 18.5a8.5 8.5 0 1 1 12 0"/></svg>'
 SITE = 'Kevin Amundson — Media Hub'
 TZ = ZoneInfo('America/Chicago')
 e_ = lambda s: html.escape(str(s), quote=True)
@@ -161,8 +166,11 @@ def build_pages():
         page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — {v["collection"]} video{" series" if v.get("playlist") else "s"} by Kevin R. Amundson.' if v['collection'] != 'ExploreHistory.Live' else f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)
+    listen = (f'<div class="listen" aria-label="Listen on podcast apps"><span class="listen-k">Listen on</span><ul>'
+              + ''.join(f'<li><a class="btn listen-btn {p["id"]}" href="{e_(p["url"])}" rel="noopener" target="_blank">{PODCAST_ICON}<span>{e_(p["name"])}</span></a></li>' for p in PLATFORMS)
+              + '</ul></div>') if PLATFORMS else ''
     body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1><p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). The <em>{e_(PODCAST)}</em> feed includes every recording; the series feeds below are parts of the same podcast.</p>
-<table><thead><tr><th>Feed</th><th>URL</th><th></th></tr></thead><tbody>
+{listen}<table><thead><tr><th>Feed</th><th>URL</th><th></th></tr></thead><tbody>
 <tr><td><strong>{e_(PODCAST)}</strong> <span class="dim">(all recordings)</span><div class="dim" style="font-size:.82rem">{len(episodes)} episodes</div></td><td><code>{BASE}/feeds/all.xml</code></td><td><button class="copy" data-copy="{BASE}/feeds/all.xml">Copy</button></td></tr>{rows}</tbody></table></section>'''
     page('/feeds/', 'Podcast feeds', body, 'RSS podcast feeds for every lecture series by Kevin R. Amundson.', active='feeds')
     page('/search/', 'Search', '<section class="hero wrap"><div class="bar"></div><h1>Search</h1><div id="search"></div></section>', 'Search all lectures and videos.', active='search')
