@@ -14,6 +14,10 @@ BASE = 'https://media.kevinamundson.me'
 AUTHOR = 'Kevin R. Amundson'
 PODCAST = 'The Kingdom of Our Lord'
 OWNER_EMAIL = 'thekingdomofourlord@proton.me'  # public in feeds; used by Apple/Spotify ownership checks
+# Channel-level show description for the main feed (all.xml / all.rss); blank line = paragraph break.
+SHOW_DESCRIPTION = ('Equipping Christians with resources to develop a biblical worldview and take every thought captive to obey Jesus Christ.\n\n'
+                    '\u201cThe kingdom of the world has become the kingdom of our Lord and of his Christ, and he shall reign forever and ever.\u201d\n'
+                    '\u2014 Revelation 11:15')
 # Podcast directory listings shown as "Listen on" buttons on /feeds/. Add Spotify, Amazon Music, YouTube here when live.
 PLATFORMS = [
     {'id': 'apple', 'name': 'Apple Podcasts', 'url': 'https://podcasts.apple.com/us/podcast/the-kingdom-of-our-lord/id6827272164'},
@@ -176,7 +180,8 @@ def build_pages():
     page('/search/', 'Search', '<section class="hero wrap"><div class="bar"></div><h1>Search</h1><div id="search"></div></section>', 'Search all lectures and videos.', active='search')
     page('/404.html', 'Not found', '<section class="hero wrap"><div class="bar"></div><h1>Not found</h1><p>That page does not exist. <a href="/">Go home</a>.</p></section>', index=False)
 
-def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
+def feed(path, title, desc, eps, cover, link, category, kind='episodic', cdata=False):
+    cd = lambda t: '<![CDATA[' + t.replace(']]>', ']]]]><![CDATA[>') + ']]>'
     cats = {'Christianity': '<itunes:category text="Religion &amp; Spirituality"><itunes:category text="Christianity"/></itunes:category>',
             'History': '<itunes:category text="History"/><itunes:category text="Religion &amp; Spirituality"><itunes:category text="Christianity"/></itunes:category>'}[category]
     items = []
@@ -192,7 +197,7 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic'):
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel><title>{xesc(title)}</title><link>{BASE}{link}</link><atom:link href="{BASE}{path}" rel="self" type="application/rss+xml"/>
-<description>{xesc(desc)}</description><itunes:summary>{xesc(desc)}</itunes:summary><language>en-us</language><copyright>© Kevin R. Amundson</copyright>
+<description>{cd(desc) if cdata else xesc(desc)}</description><itunes:summary>{cd(desc) if cdata else xesc(desc)}</itunes:summary><language>en-us</language><copyright>© Kevin R. Amundson</copyright>
 <itunes:author>{xesc(AUTHOR)}</itunes:author><itunes:owner><itunes:name>{xesc(AUTHOR)}</itunes:name><itunes:email>{OWNER_EMAIL}</itunes:email></itunes:owner><managingEditor>{OWNER_EMAIL} ({xesc(AUTHOR)})</managingEditor>
 <itunes:image href="{BASE}{cover}"/><image><url>{BASE}{cover}</url><title>{xesc(title)}</title><link>{BASE}{link}</link></image>
 {cats}<itunes:explicit>false</itunes:explicit><itunes:type>{kind}</itunes:type><podcast:locked>no</podcast:locked>
@@ -205,8 +210,8 @@ def build_feeds():
     for s in series:
         kind = 'serial' if s['id'].startswith('rst-') or s['id'] == 'pentateuch' else 'episodic'
         feed(s['feed'], f"{PODCAST}: {s['title']}", s['description'] + ' Lectures by Kevin R. Amundson.', s['eps'], s['cover'], s['url'], s['category'], kind)
-    feed('/feeds/all.xml', PODCAST, 'Every lecture and recording by Kevin R. Amundson: Redemption School of Theology courses in theology and history, Sunday school, and talks.',
-         sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1500.jpg', '/', 'Christianity')
+    feed('/feeds/all.xml', PODCAST, SHOW_DESCRIPTION,
+         sorted(episodes, key=lambda e: e['date']), '/covers/kingdom-of-our-lord-1500.jpg', '/', 'Christianity', cdata=True)
     # Identical copy at /feeds/all.rss (only atom:link self differs) for directories that prefer .rss
     src = open(os.path.join(DIST, 'feeds/all.xml')).read()
     selfx = f'<atom:link href="{BASE}/feeds/all.xml" rel="self"'
