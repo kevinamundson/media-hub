@@ -114,3 +114,18 @@ footer.site{border-top:1px solid var(--line);color:var(--dim);font-size:.88rem;p
 @media (min-width:768px){:root{--g:32px}}
 .pagefind-ui .pagefind-ui__search-clear{min-height:44px;min-width:44px}
 #player{padding-bottom:env(safe-area-inset-bottom);height:calc(var(--player) + env(safe-area-inset-bottom))}
+/* Audio appearance cards: 16:9 thumbnail of the original show's artwork, matching the video cards */
+.athumb{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;cursor:pointer;border:1px solid var(--line);background:#000}
+.athumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.athumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.8));pointer-events:none}
+.athumb .pbtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:50px;border-radius:14px;border:0;background:rgba(132,1,14,.92);color:#fff;z-index:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.athumb .pbtn svg{width:24px;height:24px}
+.athumb .cap{position:absolute;left:14px;bottom:12px;right:72px;z-index:1;font-weight:600;text-shadow:0 1px 3px #000}
+.athumb .dur{position:absolute;right:12px;bottom:12px;z-index:1;font-size:.78rem;font-weight:600;background:rgba(0,0,0,.7);padding:2px 8px;border-radius:6px}
+.abadge{position:absolute;left:12px;top:12px;z-index:1;display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font:700 .72rem Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.athumb .prog{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:1;background:transparent;margin:0;max-width:none;border-radius:0}.athumb .prog i{display:block;height:100%;background:var(--red2);width:0}
+.athumb.playing{border-color:var(--red2)}
+.acard .d+.d{margin-top:2px}
+.athumb .pbtn:hover{background:var(--red2)}
+/* YouTube Shorts (vertical): 16:9 card thumbnail (contained on blurred backdrop); once playing, the player becomes 9:16 */
+.lite-yt.vertical:has(iframe){aspect-ratio:9/16;width:min(100%,calc(78vh * 9 / 16));margin-inline:auto}

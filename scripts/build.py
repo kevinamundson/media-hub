@@ -139,21 +139,25 @@ def build_pages():
         # v["playlist"] may be null for standalone videos (no YouTube playlist); v["links"] holds externally hosted
         # audio (guest appearances) that is linked, not rehosted, and never added to the podcast feeds.
         lst = f'&list={v["playlist"]}' if v.get('playlist') else ''
-        cards = ''.join(f'<div><div class="lite-yt" data-id="{x["id"]}" data-title="{e_(x["title"])}"><button aria-label="Play {e_(x["title"])}"></button><span class="cap">{e_(x["title"])}</span></div>'
-                        f'<div class="d">{nice_date(x["date"])}{(" · " + e_(x["channel"])) if x.get("channel") else ""} · <a href="https://www.youtube.com/watch?v={x["id"]}{lst}">Watch on YouTube</a></div></div>' for x in v['videos'])
+        cards = ''.join(f'<div><div class="lite-yt{" vertical" if x.get("vertical") else ""}" data-id="{x["id"]}" data-title="{e_(x["title"])}"{f' data-thumb="{x["thumb"]}"' if x.get("thumb") else ""}><button aria-label="Play {e_(x["title"])}"></button><span class="cap">{e_(x["title"])}</span></div>'
+                        f'<div class="d">{nice_date(x["date"])}{(" · " + e_(x["channel"])) if x.get("channel") else ""} · <a href="{f'https://www.youtube.com/shorts/{x["id"]}' if x.get("vertical") else f'https://www.youtube.com/watch?v={x["id"]}{lst}'}">Watch on YouTube</a></div></div>' for x in v['videos'])
         if v.get('playlist'): src = f'<a href="https://www.youtube.com/playlist?list={v["playlist"]}">Open playlist on YouTube</a>'
         elif v.get('source'): src = f'Originally shared at <a href="{e_(v["source"])}">{e_(v["source"].split("//")[1])}</a>'
         else: src = 'Hosted on YouTube'
         links = ''
         if v.get('links'):
             url = f'/video/{v["id"]}/'
-            lis = ''.join(f'<li data-ep data-src="{e_(a["audio"])}" data-title="{e_(a["title"])}" data-series="{e_(a["show"])}" data-series-url="{url}" data-url="{url}" data-cover="{a["cover"]}" data-duration="{int(a["duration"])}">'
-                          f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><div class="ep-t"><a href="{e_(a["page"])}">{e_(a["title"])}</a>'
-                          f'<div class="ep-m">{e_(a["show"])} · {nice_date(a["date"])} · {e_(a["speaker"])} · <a href="{e_(a["page"])}">Original episode page</a></div><div class="prog"><i></i></div></div>'
-                          f'<span class="dur">{hms(a["duration"])}</span></li>' for a in v['links'])
-            links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show. Not part of the podcast feeds.</p><ol class="eps" data-list id="links">{lis}</ol>'
+            # Audio appearances render as 16:9 thumbnail cards using the original show's artwork (square art fit inside
+            # a blurred backdrop, pre-rendered into a["thumb"]); the play button streams the original MP3 in the site player.
+            acards = ''.join(f'<div class="acard"><div class="athumb" data-ep data-src="{e_(a["audio"])}" data-title="{e_(a["title"])}" data-series="{e_(a["show"])}" data-series-url="{url}" data-url="{url}" data-cover="{a["cover"]}" data-duration="{int(a["duration"])}">'
+                          f'<img src="{a.get("thumb") or a["cover"]}" alt="{e_(a["show"])} show artwork" width="1280" height="720" loading="lazy">'
+                          f'<span class="abadge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/></svg>Audio</span>'
+                          f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><span class="cap">{e_(a["title"])}</span><span class="dur">{hms(a["duration"])}</span><div class="prog"><i></i></div></div>'
+                          f'<div class="d">{nice_date(a["date"])} · {e_(a["show"])} · <a href="{e_(a["page"])}">Original episode page</a></div>'
+                          f'<div class="d">{e_(a["speaker"])}</div></div>' for a in v['links'])
+            links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show. Not part of the podcast feeds.</p><div class="vgrid" data-list id="links">{acards}</div>'
         body = f'''<section class="hero wrap" data-pagefind-body><div class="bar"></div><div class="kicker">{e_(v["collection"])}</div><h1>{e_(v["title"])}</h1>
-<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} · {src}</p><div class="vgrid">{cards}</div>{links}</section>'''
+<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""}{f" · {len(v['links'])} audio" if v.get("links") else ""} · {src}</p><div class="vgrid">{cards}</div>{links}</section>'''
         page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — {v["collection"]} video{" series" if v.get("playlist") else "s"} by Kevin R. Amundson.' if v['collection'] != 'ExploreHistory.Live' else f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)

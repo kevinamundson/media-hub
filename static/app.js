@@ -77,8 +77,9 @@
       const b = $('.pbtn', li); if (!b) return;
       b.onclick = () => { if (li.dataset.src === cur()?.src && audio.src) return toggle(); const group = $$('[data-ep]', li.closest('[data-list]') || document); playList(group.map(epOf), group.indexOf(li)); };
     });
+    $$('.athumb').forEach(t => (t.onclick = ev => { if (!ev.target.closest('.pbtn, a')) $('.pbtn', t)?.click(); }));
     $$('[data-playall]').forEach(b => (b.onclick = () => { const g = $$('[data-ep]', $(b.dataset.playall)); if (g.length) playList(g.map(epOf), 0); }));
-    $$('.lite-yt').forEach(el => { el.style.backgroundImage = `url(https://i.ytimg.com/vi/${el.dataset.id}/hqdefault.jpg)`;
+    $$('.lite-yt').forEach(el => { el.style.backgroundImage = `url(${el.dataset.thumb || `https://i.ytimg.com/vi/${el.dataset.id}/hqdefault.jpg`})`;
       el.onclick = () => { if ($('iframe', el)) return; const f = document.createElement('iframe'); f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'; f.allowFullscreen = true; f.title = el.dataset.title || 'YouTube video';
         f.src = `https://www.youtube-nocookie.com/embed/${el.dataset.id}?autoplay=1&rel=0` + (el.dataset.list ? `&list=${el.dataset.list}` : ''); el.append(f); audio.pause(); }; });
     $$('[data-copy]').forEach(b => (b.onclick = () => navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = 'Copied'; setTimeout(() => (b.textContent = 'Copy'), 1500); })));
