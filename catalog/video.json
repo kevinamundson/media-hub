@@ -248,5 +248,62 @@
         "desc": "Explore History: Plymouth 400 (episode 10)\n\nAfter 400 years, the events surrounding the Pilgrim’s arrival in Plymouth have had a profound and lasting impact on the United States of America. We are the blessed recipients of their labors. They applied the Bible to every area of life — from family and economics to church and government. The testimony of their lives is an inspiration for us today to r"
       }
     ]
+  },
+  {
+    "id": "redemption-civic-vanguard",
+    "title": "Redemption Civic Vanguard",
+    "playlist": null,
+    "collection": "Redemption City Church",
+    "source": "https://www.redemptionrochester.com/redemption-civic-vanguard",
+    "videos": [
+      {
+        "id": "bJdHMep3hZI",
+        "title": "History of Civil Liberty | Kevin Amundson",
+        "date": "2024-10-08",
+        "channel": "Redemption City Church",
+        "desc": "@KevinAmundson delivers a lecture on the History of Civil Liberty"
+      }
+    ]
+  },
+  {
+    "id": "interviews-and-guest-appearances",
+    "title": "Interviews & Guest Appearances",
+    "playlist": null,
+    "collection": "Guest appearances",
+    "source": null,
+    "videos": [
+      {
+        "id": "dT5Tuc_dzMU",
+        "title": "Exploring History with Kevin and Emily Amundson (Podcast #91)",
+        "date": "2023-09-21",
+        "channel": "The Lancaster Patriot",
+        "desc": "Kevin and Emily Amundson, hosts of ExploreHistory.Live, sit down with Chris Hume to discuss their projects that trace God's providential work throughout human history.\n\nCheck our Kevin and Emily's YouTube channel: https://www.youtube.com/@explorehistorylive\n\nSupport The Lancaster Patriot Podcast: https://www.patreon.com/TheLancasterPatriot"
+      },
+      {
+        "id": "NDpDIkP7bCY",
+        "title": "The Christian Pulpit in American History | Kevin R. Amundson",
+        "date": "2026-10-18",
+        "channel": "Future of Christendom",
+        "desc": "Kevin Amundson discusses the history of the Christian pulpit in America at Future of Christendom's 2026 Fall Conference, America Reforged."
+      }
+    ],
+    "links": [
+      {
+        "kind": "audio",
+        "id": "2025-10-29-iron-sharpens-iron-radio-the-unfolding-of-god-s-providential-plan-in-history",
+        "title": "The Unfolding of God's Providential Plan in History",
+        "show": "Iron Sharpens Iron Radio",
+        "date": "2025-10-29",
+        "speaker": "Emily Amundson, Kevin Amundson",
+        "audio": "https://media.ironsharpensironradio.com/20251029ISI.mp3",
+        "mime": "audio/mpeg",
+        "bytes": 43151360,
+        "duration": 7190.2,
+        "page": "https://ironsharpensironradio.com/2025/10/30/october-29-2025-show-with-emily-kevin-amundson-on-the-unfolding-of-gods-providential-plan-in-history/",
+        "cover": "/covers/iron-sharpens-iron-radio.png",
+        "cover_original": "https://www.ironsharpensironradio.com/wp-content/uploads/2015/06/Iron-Sharpens-Iron-Podcast-Logo.png",
+        "desc": "October 29, 2025 show with Emily & Kevin Amundson, founders of Explore History Live, on “Discover the Unfolding of God's Providential Plan in History.”"
+      }
+    ]
   }
 ]

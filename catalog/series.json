@@ -124,5 +124,135 @@
     "category": "Christianity",
     "source": "https://www.redemptionrochester.com/christ-over-all",
     "cover": "/covers/christ-over-all.jpg"
+  },
+  {
+    "id": "evangelism-and-biopics",
+    "title": "Evangelism + Biopics",
+    "subtitle": "Adult Sunday School · 2026",
+    "description": "Adult Sunday school series at Redemption City Church on evangelism and the lives of Christian figures.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/evangelism-biopics",
+    "cover": "/covers/evangelism-and-biopics.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1774803434202-TI3DE3SNHD34KD5B7X87/Evangelism.png"
+  },
+  {
+    "id": "rooted-and-flourishing",
+    "title": "Rooted & Flourishing: Women in the Church",
+    "subtitle": "Women's Symposium · 2026",
+    "description": "Redemption City Church's 2026 Women's Symposium, Rooted & Flourishing: Women in the Church.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/2026-rooted-flourishing",
+    "cover": "/covers/rooted-and-flourishing.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1770835163404-1FMONLZWVKMWBN4Y3QU8/cover.png"
+  },
+  {
+    "id": "colossians",
+    "title": "Colossians",
+    "subtitle": "Sermons · 2025",
+    "description": "Sermon series at Redemption City Church through Paul's letter to the Colossians.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/colossians",
+    "cover": "/covers/colossians.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1759068706264-HQ6HYH9I7W8J8XU1CIVD/cover.png"
+  },
+  {
+    "id": "how-to-watch-a-movie",
+    "title": "How to Watch a Movie",
+    "subtitle": "Adult Sunday School · 2025",
+    "description": "A family practicum taught by Kevin and Emily Amundson at Redemption City Church.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/how-to-watch-a-movie",
+    "cover": "/covers/how-to-watch-a-movie.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1783263305055-ZXNKFWXTDB6S891U6O14/howtowathcamovie.png"
+  },
+  {
+    "id": "psummer-of-psalms",
+    "title": "Psummer of Psalms",
+    "subtitle": "Sermons · 2022–2025",
+    "description": "Redemption City Church's summer sermon series through the Psalms.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/psummer-of-psalms",
+    "cover": "/covers/psummer-of-psalms.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1599016149431-ZYKL66IL8N7VAPOGPG66/folder.png"
+  },
+  {
+    "id": "family-and-finance",
+    "title": "Family + Finance",
+    "subtitle": "Adult Sunday School · 2024",
+    "description": "Adult Sunday school series at Redemption City Church on the purpose of money for the advancement of God's kingdom.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/family-finance",
+    "cover": "/covers/family-and-finance.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1706498734558-8QGI9GLLMQ4WFESTC8F2/folder.png"
+  },
+  {
+    "id": "isaiah",
+    "title": "Isaiah",
+    "subtitle": "Adult Sunday School · 2023",
+    "description": "Adult Sunday school series at Redemption City Church through the book of Isaiah.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/isaiah",
+    "cover": "/covers/isaiah.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1697381615309-J4WXTGLLFKZK7XM49T8H/Isaiah.01.png"
+  },
+  {
+    "id": "sanctification",
+    "title": "Sanctification",
+    "subtitle": "Adult Sunday School · 2023",
+    "description": "Adult Sunday school series at Redemption City Church on sanctification.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/sanctification-audio",
+    "cover": "/covers/sanctification.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1679239563660-HJMZ4BOW1LNKDQ75NMD0/Podcast+-+iTunes-Refresh.png"
+  },
+  {
+    "id": "church-history-and-our-place-in-it",
+    "title": "Church History and Our Place in It",
+    "subtitle": "Adult Sunday School · 2022",
+    "description": "Adult Sunday school series at Redemption City Church on church history: the Church in the East, and colonial Christianity, revival and revivalism.",
+    "category": "History",
+    "source": "https://www.redemptionrochester.com/church-history-and-our-place-in-it",
+    "cover": "/covers/church-history-and-our-place-in-it.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1662952567975-F9707CEQSBSGFTI5QH2S/Podcast+-+iTunes.png"
+  },
+  {
+    "id": "god-the-gospel-and-culture",
+    "title": "God, the Gospel, and Culture",
+    "subtitle": "Adult Sunday School · 2022",
+    "description": "Adult Sunday school series at Redemption City Church: why theology matters for today's world. Kevin R. Amundson's sessions cover revelation and theological system, the nature of man, and civil government.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/god-the-gospel-and-culture",
+    "cover": "/covers/god-the-gospel-and-culture.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1648048139683-3W39R0C50K93EMT5LDXB/D003DCF8-3CF0-4AE2-AD0B-8EB65D657A9F.png"
+  },
+  {
+    "id": "the-humility-of-christ",
+    "title": "The Humility of Christ (Advent 2021)",
+    "subtitle": "Sermons · Advent 2021",
+    "description": "Advent 2021 sermon series at Redemption City Church.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/the-humility-of-christ",
+    "cover": "/covers/the-humility-of-christ.png",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1638231107715-O5XPWMBSVU4OA61TLBHQ/Humility+of+Christ+-+Square.png"
+  },
+  {
+    "id": "kings-of-israel",
+    "title": "Kings of Israel: The Good, the Bad, and the Ugly",
+    "subtitle": "Adult Sunday School · 2021",
+    "description": "Adult Sunday school series at Redemption City Church on the kings of Israel. Kevin R. Amundson taught the session on the prophets of Israel.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/kings-of-israel",
+    "cover": "/covers/kings-of-israel.jpg",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1616169890024-HHUFMLRDCG6P2HAU7HHQ/Artboard+1.jpg"
+  },
+  {
+    "id": "why-we-are-not",
+    "title": "Why We Are (Not)",
+    "subtitle": "Adult Sunday School · 2020",
+    "description": "Adult Sunday school series at Redemption City Church on what the church believes and why. Kevin R. Amundson taught the Monergist and Creationist sessions.",
+    "category": "Christianity",
+    "source": "https://www.redemptionrochester.com/why-we-are-not",
+    "cover": "/covers/why-we-are-not.jpg",
+    "cover_original": "https://images.squarespace-cdn.com/content/v1/580edb7db3db2b9be8c19a8d/1580702585252-87M54P7K5V18176CKJZV/folder.jpg"
   }
 ]

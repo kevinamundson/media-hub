@@ -47,6 +47,7 @@ def cover(title, kicker, sub, path, size=1400):
 if __name__ == '__main__':
     series = json.load(open(os.path.join(ROOT, 'catalog', 'series.json')))
     for s in series:
+        if s.get('cover_original'): continue  # original source art kept as-is (static/covers/<id>.<ext>), not generated
         kicker = 'Redemption School of Theology' if s['id'].startswith('rst-') else 'Lectures & Recordings'
         cover(s['title'], kicker, s['subtitle'].split(' · ')[-1], os.path.join(OUT, s['id'] + '.jpg'))
     # Official podcast cover supplied by Kevin (1500x1500 RGB JPEG), used as-is.

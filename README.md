@@ -34,6 +34,15 @@ npx wrangler deploy
 2. Add an entry to `catalog/episodes.json` (id, series, title, date, audio, mime, bytes, duration)
 3. Build, run `scripts/worker_sizes.py`, deploy. Feeds update automatically.
 
+## Original cover art and linked guest appearances
+
+- A series with `cover_original` (source image URL) uses that original art, saved as-is at `static/covers/<id>.<ext>`;
+  `scripts/covers.py` skips it and only generates typographic covers for the other series.
+- `catalog/video.json` groups may have `"playlist": null` (standalone videos; `source` links the original page) and a
+  `links` list of externally hosted audio (guest appearances). Linked audio streams from the original host and is
+  never copied into `/audio/` or added to the podcast feeds.
+- Files over 25 MiB can't be served as Workers assets; they're left out until there's an R2/re-encode decision.
+
 ## Moving audio to R2 later
 
 Keep the `/audio/...` paths. Serve the bucket at the same paths (or proxy from the Worker) so feed

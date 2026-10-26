@@ -93,7 +93,7 @@ def series_card(s):
 def video_card(v):
     first = v['videos'][0]['id'] if v['videos'] else ''
     return (f'<a class="card video" href="/video/{v["id"]}/"><img src="https://i.ytimg.com/vi/{first}/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"><div class="b">'
-            f'<div class="kicker">{e_(v["collection"])}</div><h3>{e_(v["title"])}</h3><div class="m">{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} on YouTube</div></div></a>')
+            f'<div class="kicker">{e_(v["collection"])}</div><h3>{e_(v["title"])}</h3><div class="m">{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} on YouTube{f" · {len(v['links'])} audio" if v.get("links") else ""}</div></div></a>')
 
 def build_pages():
     total = sum(e['duration'] for e in episodes)
@@ -132,15 +132,29 @@ def build_pages():
             page(e['url'], e['title'], body, f"{e['title']} — {s['title']}. {e['speaker']}, {nice_date(e['date'])}.", image=s['cover'], og_type='music.song', active='audio',
                  extra_head=f'<meta property="og:audio" content="{BASE}{e["audio"]}"><meta property="og:audio:type" content="{e["mime"]}">')
 
-    body = f'''<section class="hero wrap"><div class="bar"></div><h1>Video</h1><p>ExploreHistory.Live series, hosted on YouTube. Tap any video to play it here.</p>
+    body = f'''<section class="hero wrap"><div class="bar"></div><h1>Video</h1><p>ExploreHistory.Live series, talks and guest appearances, hosted on YouTube. Tap any video to play it here.</p>
 <div class="actions"><a class="btn ghost" href="https://www.youtube.com/c/KevinAmundson">YouTube channel</a></div><div class="grid">{"".join(video_card(v) for v in videos)}</div></section>'''
     page('/video/', 'Video', body, 'ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
     for v in videos:
+        # v["playlist"] may be null for standalone videos (no YouTube playlist); v["links"] holds externally hosted
+        # audio (guest appearances) that is linked, not rehosted, and never added to the podcast feeds.
+        lst = f'&list={v["playlist"]}' if v.get('playlist') else ''
         cards = ''.join(f'<div><div class="lite-yt" data-id="{x["id"]}" data-title="{e_(x["title"])}"><button aria-label="Play {e_(x["title"])}"></button><span class="cap">{e_(x["title"])}</span></div>'
-                        f'<div class="d">{nice_date(x["date"])} · <a href="https://www.youtube.com/watch?v={x["id"]}&list={v["playlist"]}">Watch on YouTube</a></div></div>' for x in v['videos'])
+                        f'<div class="d">{nice_date(x["date"])}{(" · " + e_(x["channel"])) if x.get("channel") else ""} · <a href="https://www.youtube.com/watch?v={x["id"]}{lst}">Watch on YouTube</a></div></div>' for x in v['videos'])
+        if v.get('playlist'): src = f'<a href="https://www.youtube.com/playlist?list={v["playlist"]}">Open playlist on YouTube</a>'
+        elif v.get('source'): src = f'Originally shared at <a href="{e_(v["source"])}">{e_(v["source"].split("//")[1])}</a>'
+        else: src = 'Hosted on YouTube'
+        links = ''
+        if v.get('links'):
+            url = f'/video/{v["id"]}/'
+            lis = ''.join(f'<li data-ep data-src="{e_(a["audio"])}" data-title="{e_(a["title"])}" data-series="{e_(a["show"])}" data-series-url="{url}" data-url="{url}" data-cover="{a["cover"]}" data-duration="{int(a["duration"])}">'
+                          f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><div class="ep-t"><a href="{e_(a["page"])}">{e_(a["title"])}</a>'
+                          f'<div class="ep-m">{e_(a["show"])} · {nice_date(a["date"])} · {e_(a["speaker"])} · <a href="{e_(a["page"])}">Original episode page</a></div><div class="prog"><i></i></div></div>'
+                          f'<span class="dur">{hms(a["duration"])}</span></li>' for a in v['links'])
+            links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show. Not part of the podcast feeds.</p><ol class="eps" data-list id="links">{lis}</ol>'
         body = f'''<section class="hero wrap" data-pagefind-body><div class="bar"></div><div class="kicker">{e_(v["collection"])}</div><h1>{e_(v["title"])}</h1>
-<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} · <a href="https://www.youtube.com/playlist?list={v["playlist"]}">Open playlist on YouTube</a></p><div class="vgrid">{cards}</div></section>'''
-        page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
+<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} · {src}</p><div class="vgrid">{cards}</div>{links}</section>'''
+        page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — {v["collection"]} video{" series" if v.get("playlist") else "s"} by Kevin R. Amundson.' if v['collection'] != 'ExploreHistory.Live' else f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)
     body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1><p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). The <em>{e_(PODCAST)}</em> feed includes every recording; the series feeds below are parts of the same podcast.</p>
