@@ -163,7 +163,7 @@ def build_pages():
                         f'<div class="d">{nice_date(x["date"])}{(" · " + e_(x["channel"])) if x.get("channel") else ""} · <a href="{f'https://www.youtube.com/shorts/{x["id"]}' if x.get("vertical") else f'https://www.youtube.com/watch?v={x["id"]}{lst}'}">Watch on YouTube</a></div></div>' for x in v['videos'])
         if v.get('playlist'): src = f'<a href="https://www.youtube.com/playlist?list={v["playlist"]}">Open playlist on YouTube</a>'
         elif v.get('source'): src = f'Originally shared at <a href="{e_(v["source"])}">{e_(v["source"].split("//")[1])}</a>'
-        else: src = 'Hosted on YouTube'
+        else: src = ''
         links = ''
         if v.get('links'):
             url = f'/video/{v["id"]}/'
@@ -175,9 +175,9 @@ def build_pages():
                           f'<button class="pbtn" aria-label="Play {e_(a["title"])}">{PLAY}</button><span class="cap">{e_(a["title"])}</span><span class="dur">{hms(a["duration"])}</span><div class="prog"><i></i></div></div>'
                           f'<div class="d">{nice_date(a["date"])} · {e_(a["show"])} · <a href="{e_(a["page"])}">Original episode page</a></div>'
                           f'<div class="d">{e_(a["speaker"])}</div></div>' for a in v['links'])
-            links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show. Not part of the podcast feeds.</p><div class="vgrid" data-list id="links">{acards}</div>'
+            links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show.</p><div class="vgrid" data-list id="links">{acards}</div>'
         body = f'''<section class="hero wrap" data-pagefind-body><div class="bar"></div><div class="kicker">{e_(v["collection"])}</div><h1>{e_(v["title"])}</h1>
-<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""}{f" · {len(v['links'])} audio" if v.get("links") else ""} · {src}</p><div class="vgrid">{cards}</div>{links}</section>'''
+<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""}{f" · {len(v['links'])} audio" if v.get("links") else ""}{(" · " + src) if src else ""}</p><div class="vgrid">{cards}</div>{links}</section>'''
         page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — {v["collection"]} video{" series" if v.get("playlist") else "s"} by Kevin R. Amundson.' if v['collection'] != 'ExploreHistory.Live' else f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)
