@@ -21,6 +21,7 @@ SHOW_DESCRIPTION = ('Equipping Christians with resources to develop a biblical w
 # Podcast directory listings shown as "Listen on" buttons on /feeds/. Add Spotify, Amazon Music, YouTube here when live.
 PLATFORMS = [
     {'id': 'apple', 'name': 'Apple Podcasts', 'url': 'https://podcasts.apple.com/us/podcast/the-kingdom-of-our-lord/id6827272164'},
+    {'id': 'spotify', 'name': 'Spotify', 'url': 'https://open.spotify.com/show/3NMs6JMDaOckjwyFZafcFh'},
 ]
 PODCAST_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="11" r="2.2"/><path d="M12 14.5v6"/><path d="M8.5 15.5a5 5 0 1 1 7 0"/><path d="M6 18.5a8.5 8.5 0 1 1 12 0"/></svg>'
 SITE = 'Kevin Amundson — Media Hub'
