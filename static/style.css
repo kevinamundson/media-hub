@@ -88,7 +88,7 @@ footer.site{border-top:1px solid var(--line);color:var(--dim);font-size:.88rem;p
  .card .b{padding:10px 10px 12px}.card h3{font-size:1rem}.card .m{font-size:.8rem}
 }
 @media (max-width:380px){header.site .wrap{gap:8px}.brand{font-size:.85rem}html:not(.js) nav.main{font-size:.76rem}html:not(.js) .nav-items{gap:7px}}
-.hero.home{display:grid;grid-template-columns:1fr 260px;gap:44px;align-items:center}.podcast-art{display:block;text-align:center;color:var(--muted);font-size:.85rem;text-decoration:none}.podcast-art img{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}.podcast-art:hover span{color:var(--fg,#fafafa)}@media (max-width:760px){.hero.home{grid-template-columns:1fr;gap:24px}.podcast-art{max-width:200px}}
+.hero.home{display:grid;grid-template-columns:1fr 260px;gap:44px;align-items:center}.podcast-art{display:block;text-align:center;color:var(--muted);font-size:.85rem;text-decoration:none}.podcast-art img{width:100%;height:auto;border-radius:10px;display:block;margin-bottom:10px;box-shadow:0 10px 30px rgba(0,0,0,.45)}.podcast-art:hover span{color:var(--fg,#fafafa)}@media (max-width:760px){.hero.home{grid-template-columns:1fr;gap:24px}.podcast-art{max-width:200px;width:100%;justify-self:center}}
 /* Focus + search highlight in the red theme (no browser-default blue) */
 :root{accent-color:var(--red2);-webkit-tap-highlight-color:rgba(200,50,63,.25)}
 :focus-visible{outline:2px solid var(--red2);outline-offset:2px}
