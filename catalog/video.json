@@ -250,6 +250,23 @@
     ]
   },
   {
+    "id": "missiology-2020",
+    "title": "Missiology (2020)",
+    "playlist": null,
+    "collection": "Redemption School of Theology",
+    "description": "From the 2020 Redemption School of Theology course “Missions and the Local Church” at Redemption City Church: History of Missions, Part 2, a session of missionary biographies. Kevin R. Amundson presents St. Boniface (3:47–16:47).",
+    "cover": "/covers/missiology-2020-16x9.jpg",
+    "videos": [
+      {
+        "id": "BLYcUvP9PGA",
+        "title": "History of Missions — Part 2 / Missionary Bios",
+        "date": "2020-10-04",
+        "channel": "Redemption City Church",
+        "desc": "3:47 Kevin Amundson | St. Boniface\n16:47 Kurtis Amundson | John Eliot\n28:18 Ryan Henderson | C. T. Studd\n43:33 Kylene Moeckly | Maude Cary"
+      }
+    ]
+  },
+  {
     "id": "redemption-civic-vanguard",
     "title": "Redemption Civic Vanguard",
     "playlist": null,
@@ -279,13 +296,6 @@
     "collection": "Guest appearances",
     "source": null,
     "videos": [
-      {
-        "id": "BLYcUvP9PGA",
-        "title": "History of Missions — Part 2 / Missionary Bios",
-        "date": "2020-10-04",
-        "channel": "Redemption City Church",
-        "desc": "3:47 Kevin Amundson | St. Boniface\n16:47 Kurtis Amundson | John Eliot\n28:18 Ryan Henderson | C. T. Studd\n43:33 Kylene Moeckly | Maude Cary"
-      },
       {
         "id": "dT5Tuc_dzMU",
         "title": "Exploring History with Kevin and Emily Amundson (Podcast #91)",

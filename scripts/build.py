@@ -113,7 +113,7 @@ def series_card(s):
 
 def video_card(v):
     first = v['videos'][0]['id'] if v['videos'] else ''
-    return (f'<a class="card video" href="/video/{v["id"]}/"><img src="https://i.ytimg.com/vi/{first}/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"><div class="b">'
+    return (f'<a class="card video" href="/video/{v["id"]}/"><img src="{v.get("cover") or f"https://i.ytimg.com/vi/{first}/hqdefault.jpg"}" alt="" loading="lazy" width="480" height="270"><div class="b">'
             f'<div class="kicker">{e_(v["collection"])}</div><h3>{e_(v["title"])}</h3><div class="m">{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""} on YouTube{f" · {len(v['links'])} audio" if v.get("links") else ""}</div></div></a>')
 
 def build_pages():
@@ -178,7 +178,7 @@ def build_pages():
                           f'<div class="d">{e_(a["speaker"])}</div></div>' for a in v['links'])
             links = f'<h2>Audio</h2><p class="dim" style="font-size:.85rem">Streamed from the original show.</p><div class="vgrid" data-list id="links">{acards}</div>'
         body = f'''<section class="hero wrap" data-pagefind-body><div class="bar"></div><div class="kicker">{e_(v["collection"])}</div><h1>{e_(v["title"])}</h1>
-<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""}{f" · {len(v['links'])} audio" if v.get("links") else ""}{(" · " + src) if src else ""}</p><div class="vgrid">{cards}</div>{links}</section>'''
+{f'<p>{e_(v["description"])}</p>' if v.get("description") else ""}<p>{len(v["videos"])} video{"s" if len(v["videos"]) != 1 else ""}{f" · {len(v['links'])} audio" if v.get("links") else ""}{(" · " + src) if src else ""}</p><div class="vgrid">{cards}</div>{links}</section>'''
         page(f'/video/{v["id"]}/', v['title'], body, f'{v["title"]} — {v["collection"]} video{" series" if v.get("playlist") else "s"} by Kevin R. Amundson.' if v['collection'] != 'ExploreHistory.Live' else f'{v["title"]} — ExploreHistory.Live video series by Kevin R. Amundson.', active='video')
 
     rows = ''.join(f'<tr><td><a href="{s["url"]}">{e_(s["title"])}</a><div class="dim" style="font-size:.82rem">{len(s["eps"])} episodes</div></td><td><code>{BASE}{s["feed"]}</code></td><td><button class="copy" data-copy="{BASE}{s["feed"]}">Copy</button></td></tr>' for s in series)
