@@ -2,7 +2,7 @@
 
 Usage:  python3 scripts/build.py [--media ../files]
 Writes dist/. Audio files are NOT in git; pass --media (folder containing audio/...) to copy them into dist
-for a Workers Static Assets deploy. Run `npx pagefind --site dist` afterwards for search.
+for a Workers Static Assets deploy. Then runs Pagefind (pinned PAGEFIND_VERSION) on dist/ for search; pass --no-pagefind to skip.
 """
 import json, os, sys, shutil, html, datetime, email.utils
 from zoneinfo import ZoneInfo
@@ -10,6 +10,7 @@ from xml.sax.saxutils import escape as xesc
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
+PAGEFIND_VERSION = '1.5.2'
 BASE = 'https://media.kevinamundson.me'
 AUTHOR = 'Kevin R. Amundson'
 PODCAST = 'The Kingdom of Our Lord'
@@ -184,8 +185,8 @@ def build_pages():
     listen = (f'<div class="listen" aria-label="Listen on podcast apps"><span class="listen-k">Listen on</span><ul>'
               + ''.join(f'<li><a class="listen-btn {p["id"]}" href="{e_(p["url"])}" rel="noopener" target="_blank">{p.get("icon") or PODCAST_ICON}<span>{e_(p["name"])}</span></a></li>' for p in PLATFORMS)
               + '</ul></div>') if PLATFORMS else ''
-    body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1><p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). The <em>{e_(PODCAST)}</em> feed includes every recording; the series feeds below are parts of the same podcast.</p>
-{listen}<table><thead><tr><th>Feed</th><th>URL</th><th></th></tr></thead><tbody>
+    body = f'''<section class="hero wrap feeds"><div class="bar"></div><h1>Podcast feeds</h1>{listen}<p>Paste a feed URL into any podcast app (Apple Podcasts → Library → Follow a show by URL; Pocket Casts, Overcast, AntennaPod, etc.). <em>{e_(PODCAST)}</em> feed includes every recording; the series feeds below are parts of the same podcast.</p>
+<table><thead><tr><th>Feed</th><th>URL</th><th></th></tr></thead><tbody>
 <tr><td><strong>{e_(PODCAST)}</strong> <span class="dim">(all recordings)</span><div class="dim" style="font-size:.82rem">{len(episodes)} episodes</div></td><td><code>{BASE}/feeds/all.xml</code></td><td><button class="copy" data-copy="{BASE}/feeds/all.xml">Copy</button></td></tr>{rows}</tbody></table></section>'''
     page('/feeds/', 'Podcast feeds', body, 'RSS podcast feeds for every lecture series by Kevin R. Amundson.', active='feeds')
     page('/search/', 'Search', '<section class="hero wrap"><div class="bar"></div><h1>Search</h1><div id="search"></div></section>', 'Search all lectures and videos.', active='search')
@@ -256,3 +257,10 @@ if __name__ == '__main__':
             src = os.path.join(media, e['audio'].lstrip('/')); dst = os.path.join(DIST, e['audio'].lstrip('/'))
             os.makedirs(os.path.dirname(dst), exist_ok=True); os.link(src, dst) if os.stat(src).st_dev == os.stat(os.path.dirname(dst)).st_dev else shutil.copy2(src, dst)
     print(f'built {len(series)} series, {len(episodes)} episodes, {len(videos)} video series -> {DIST}')
+    # Search index: dist/ is wiped above, so Pagefind must run on every build (pinned version; style.css overrides its UI).
+    if '--no-pagefind' not in sys.argv:
+        import subprocess
+        subprocess.run(['npx', '-y', f'pagefind@{PAGEFIND_VERSION}', '--site', DIST], check=True, stdout=subprocess.DEVNULL)
+        for f in ('pagefind-ui.js', 'pagefind-ui.css', 'pagefind.js', 'pagefind-entry.json'):
+            assert os.path.exists(os.path.join(DIST, 'pagefind', f)), f'pagefind output missing: {f}'
+        print(f'pagefind {PAGEFIND_VERSION}: indexed -> {DIST}/pagefind')

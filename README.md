@@ -18,7 +18,7 @@ and are copied into `dist/audio/` at build time. Workers assets allow up to 25 M
 ```sh
 python3 scripts/covers.py                 # only when series change (needs Pillow)
 python3 scripts/build.py --media ../files # -> dist/
-npx -y pagefind@latest --site dist        # search index
+# build.py now runs `npx -y pagefind@1.5.2 --site dist` itself (search index; --no-pagefind to skip)
 python3 scripts/worker_sizes.py           # after adding audio
 ```
 
