@@ -72,7 +72,7 @@ def page(path, title, body, desc='', image='/covers/og.jpg', active='', og_type=
 <title>{e_(full_title)}</title><meta name="description" content="{e_(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{e_(SITE)}"><meta property="og:title" content="{e_(title)}"><meta property="og:description" content="{e_(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#171717">{'' if index else '<meta name="robots" content="noindex">'}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" href="/fonts/Vollkorn.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="preload" href="/fonts/Vollkorn.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/style.css"><link rel="alternate" type="application/rss+xml" title="{e_(PODCAST)}" href="{BASE}/feeds/all.xml">{extra_head}
 </head><body>
 <header class="site"><div class="wrap"><a class="brand" href="/">Kevin Amundson <span>Media</span></a><nav class="main" aria-label="Main"><button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-items" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="nav-items" id="nav-items">{nav}<span class="sep" aria-hidden="true">|</span><a href="https://thekingdomofourlord.substack.com/">Substack</a></div></nav></div></header>
@@ -233,7 +233,6 @@ def build_misc():
     urls = ['/', '/series/', '/video/', '/feeds/', '/search/'] + [s['url'] for s in series] + [e['url'] for e in episodes] + [f'/video/{v["id"]}/' for v in videos]
     open(os.path.join(DIST, 'sitemap.xml'), 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{BASE}{u}</loc></url>' for u in urls) + '</urlset>\n')
     open(os.path.join(DIST, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
-    open(os.path.join(DIST, 'favicon.svg'), 'w').write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#171717"/><rect x="12" y="14" width="18" height="5" fill="#84010e"/><text x="12" y="50" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#fafafa">KA</text></svg>')
     open(os.path.join(DIST, '_headers'), 'w').write('''/audio/*
   Cache-Control: public, max-age=31536000, immutable
   Accept-Ranges: bytes
