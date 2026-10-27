@@ -290,6 +290,23 @@
     ]
   },
   {
+    "id": "america-reforged",
+    "title": "America Reforged",
+    "playlist": null,
+    "collection": "Future of Christendom",
+    "description": "From America Reforged, the Future of Christendom 2026 Fall Conference: Kevin R. Amundson on the history of the Christian pulpit in America.",
+    "cover": "/covers/america-reforged-16x9.jpg",
+    "videos": [
+      {
+        "id": "NDpDIkP7bCY",
+        "title": "The Christian Pulpit in American History | Kevin R. Amundson",
+        "date": "2026-10-18",
+        "channel": "Future of Christendom",
+        "desc": "Kevin Amundson discusses the history of the Christian pulpit in America at Future of Christendom's 2026 Fall Conference, America Reforged."
+      }
+    ]
+  },
+  {
     "id": "interviews-and-guest-appearances",
     "title": "Interviews & Guest Appearances",
     "playlist": null,
@@ -325,13 +342,6 @@
         "vertical": true,
         "thumb": "https://i.ytimg.com/vi/Lz0r5Er9biE/maxresdefault.jpg",
         "desc": "The City of Zumbrota will replace the current Minnesota state flag with the old one. \n\nThe city council voted 3-2 Thursday night to replace the current state flag with the 1983 version. The flag will be displayed only in the city council chambers, not outside city hall.\n\nCity Council Member Kevin Amundson, who spearheaded the push to return to using the old state flag, said it is about heritage – and politics. He also criticized the way the state went about creating the new flag."
-      },
-      {
-        "id": "NDpDIkP7bCY",
-        "title": "The Christian Pulpit in American History | Kevin R. Amundson",
-        "date": "2026-10-18",
-        "channel": "Future of Christendom",
-        "desc": "Kevin Amundson discusses the history of the Christian pulpit in America at Future of Christendom's 2026 Fall Conference, America Reforged."
       }
     ],
     "links": [
