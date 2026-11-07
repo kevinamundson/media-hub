@@ -44,6 +44,13 @@ npx wrangler deploy
 - Files over 25 MiB can't be served as Workers assets. Re-encode them to fit (Psalm 38 and Psalm 44 are 64 kbps CBR mono
   44.1 kHz MP3s made from the 156 kbps originals with `ffmpeg -ac 1 -ar 44100 -c:a libmp3lame -b:a 64k -map_metadata 0`).
 
+## Podcast download analytics (OP3)
+
+Episode enclosure URLs in every feed are prefixed with `https://op3.dev/e/` (Open Podcast Prefix
+Project). The canonical feed URL stays `https://media.kevinamundson.me/feeds/all.rss`, and each
+episode `guid` stays the permanent `/audio/...` URL so clients do not treat episodes as new.
+Stats are public at https://op3.dev after downloads start flowing (often 24–48 hours).
+
 ## Moving audio to R2 later
 
 Keep the `/audio/...` paths. Serve the bucket at the same paths (or proxy from the Worker) so feed

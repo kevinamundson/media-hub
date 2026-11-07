@@ -12,6 +12,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
 PAGEFIND_VERSION = '1.5.2'
 BASE = 'https://media.kevinamundson.me'
+# Free open podcast download analytics (https://op3.dev). Prefix only enclosure URLs;
+# keep guid and feed self-link as the permanent media.kevinamundson.me paths.
+OP3_PREFIX = 'https://op3.dev/e/'
 AUTHOR = 'Kevin R. Amundson'
 PODCAST = 'The Kingdom of Our Lord'
 OWNER_EMAIL = 'thekingdomofourlord@proton.me'  # public in feeds; used by Apple/Spotify ownership checks
@@ -205,7 +208,7 @@ def feed(path, title, desc, eps, cover, link, category, kind='episodic', cdata=F
         d = f"{e['title']} — {s['title']}{(' (' + e['label'] + ')') if e['label'] else ''}. {e['speaker']}. Recorded {nice_date(e['date'])}. {s['description']}"
         items.append(f'''<item><title>{xesc(t)}</title><description>{xesc(d.replace('&', '&amp;'))}</description><itunes:summary>{xesc(d)}</itunes:summary><link>{BASE}{e["url"]}</link>
 <guid isPermaLink="false">{BASE}{e["audio"]}</guid><pubDate>{rfc822(e["date"])}</pubDate>
-<enclosure url="{xesc(BASE + e["audio"])}" length="{e["bytes"]}" type="{"audio/mpeg" if e["mime"] == "audio/mpeg" else "audio/x-m4a"}"/>
+<enclosure url="{xesc(OP3_PREFIX + (BASE + e["audio"]).removeprefix("https://"))}" length="{e["bytes"]}" type="{"audio/mpeg" if e["mime"] == "audio/mpeg" else "audio/x-m4a"}"/>
 <itunes:duration>{int(e["duration"])}</itunes:duration><itunes:explicit>false</itunes:explicit><itunes:episodeType>full</itunes:episodeType>{f"<itunes:episode>{e['seq']}</itunes:episode>" if path != '/feeds/all.xml' else ''}
 {'' if path == '/feeds/all.xml' else f'<itunes:image href="{BASE}{s["cover"]}"/>'}<itunes:author>{xesc(AUTHOR)}</itunes:author></item>''')
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
